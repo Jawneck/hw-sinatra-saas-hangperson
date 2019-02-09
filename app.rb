@@ -43,9 +43,6 @@ class HangpersonApp < Sinatra::Base
     redirect '/show'
   end
   
-  post '/new' do
-    "Goodbye World"
-  end
   
   # Everytime a guess is made, we should eventually end up at this route.
   # Use existing methods in HangpersonGame to check if player has
