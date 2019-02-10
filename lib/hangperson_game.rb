@@ -11,6 +11,7 @@ class HangpersonGame
   attr_accessor :word
   attr_accessor :guesses
   attr_accessor :wrong_guesses
+  attr_accessor :guess
   
   def initialize(word)
     @word = 'glorp'
@@ -29,5 +30,8 @@ class HangpersonGame
       return http.post(uri, "").body
     }
   end
-
+  
+  def guess(letter)
+    
+  end
 end
