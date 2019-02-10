@@ -33,5 +33,10 @@ class HangpersonGame
   
   def guess(letter)
     
+    raise ArgumentError if letter.nil?
+    raise ArgumentError if letter == ''
+    raise ArgumentError if !letter.match(/[a-zA-Z]/)
+
+    letter.downcase!
   end
 end
