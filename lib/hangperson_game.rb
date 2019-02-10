@@ -11,12 +11,19 @@ class HangpersonGame
   attr_accessor :word
   attr_accessor :guesses
   attr_accessor :wrong_guesses
-  attr_accessor :guess
+  attr_accessor :word_with_guesses 
+  attr_accessor :check_win_or_lose
   
   def initialize(word)
     @word = 'glorp'
     @guesses = ''
     @wrong_guesses = ''
+    @word_with_guesses = '' 
+    @check_win_or_lose=:play
+    
+     word.each_char do |i|
+      @word_with_guesses << '-'
+    end
   end
 
   # You can test it by running $ bundle exec irb -I. -r app.rb
@@ -38,5 +45,31 @@ class HangpersonGame
     raise ArgumentError if !letter.match(/[a-zA-Z]/)
 
     letter.downcase!
+    
+    if word.include? letter
+      unless guesses.include? letter
+        guesses << letter
+        
+        for i in 0..word.length
+          if word[i] == letter
+            word_with_guesses[i] = letter
+            @check_win_or_lose = :win if !word_with_guesses.include? '-'
+          end
+        end
+        
+        return true
+      end
+    else
+      unless wrong_guesses.include? letter
+        wrong_guesses << letter
+        
+        if wrong_guesses.size >= 7
+          @check_win_or_lose = :lose
+        end
+        
+        return true
+      end
+    end
+    return false
   end
 end
