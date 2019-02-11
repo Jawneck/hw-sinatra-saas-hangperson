@@ -40,19 +40,24 @@ class HangpersonGame
   
   def guess(letter)
     
+    #Throw errors
     raise ArgumentError if letter.nil?
     raise ArgumentError if letter == ''
     raise ArgumentError if !letter.match(/[a-zA-Z]/)
 
+    #Convert letter to lowercase
     letter.downcase!
     
+    #Check if letter in word unless guessed
     if word.include? letter
       unless guesses.include? letter
         guesses << letter
         
+        #Loop through word
         for i in 0..word.length
           if word[i] == letter
             word_with_guesses[i] = letter
+            #Win if all word guessed
             @check_win_or_lose = :win if !word_with_guesses.include? '-'
           end
         end
@@ -69,6 +74,6 @@ class HangpersonGame
         return true
       end
     end
-    return false
+    return false #if guessed letter not in word
   end
 end
