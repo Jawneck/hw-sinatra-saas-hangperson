@@ -56,13 +56,12 @@ class HangpersonGame
             @check_win_or_lose = :win if !word_with_guesses.include? '-'
           end
         end
-        
         return true
       end
     else
       unless wrong_guesses.include? letter
         wrong_guesses << letter
-        
+        #Wrong guess greater or equal to 7
         if wrong_guesses.size >= 7
           @check_win_or_lose = :lose
         end
