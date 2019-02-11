@@ -15,7 +15,7 @@ class HangpersonGame
   attr_accessor :check_win_or_lose
   
   def initialize(word)
-    @word = 'glorp'
+    @word = word
     @guesses = ''
     @wrong_guesses = ''
     @word_with_guesses = '' 
